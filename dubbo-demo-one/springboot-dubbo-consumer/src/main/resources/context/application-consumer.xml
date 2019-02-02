@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <dubbo:application name="demo-hmj-consumer"/>
+    <!-- 这样也行 -->
+    <!--<dubbo:registry id="register" address="${spring.dubbo.registry.address}"/>-->
+    <dubbo:registry id="register" protocol="zookeeper" address="${spring.dubbo.registry.zookeeperaddress}"/>
+    <!-- 这样写死了 -->
+    <!--<dubbo:registry address="127.0.0.1:2181" protocol="zookeeper"/>-->
+
+    <dubbo:reference id="personService" interface="com.demo.dubbo.api.IPersonService" />
+
+</beans>
